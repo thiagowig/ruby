@@ -48,15 +48,15 @@ library << reponsive_web_design
 p library
 
 library = Library.new
-library.add_book design_and_test
-library.add_book reponsive_web_design
-p library.books
+#library.add_book design_and_test
+#library.add_book reponsive_web_design
+#p library.books
 
-for book in library.books
+for book in library.load_books
   p "THE BOOK: #{book.price}"
 end
 
-library.books.each { |book|
+library.load_books.each { |book|
   p "THE BOOK: #{book.price}"
 }
 
@@ -116,16 +116,49 @@ p new_numbers
 numbers.each {|number| p number}
 modified_numbers = numbers.collect { |number| number ** 2 }
 p modified_numbers
-
-library.filter_by_category :web_design do |book|
-  p book.author
-end
-library.filter_by_category :tests
+#
+# library.filter_by_category :web_design do |book|
+#   p book.author
+# end
+# library.filter_by_category :tests
 
 report = Report.new library
 p report.total
 p report.titles
 
+print_method_proc = Proc.new do |book|
+  p book.author
+end
+#
+# library.filter_by_category02 :web_design, &print_method_proc
+
+print_method_lambda = lambda do |book|
+  p "LAMBDA: #{book.author}"
+end
+
+# library.filter_by_category03 :web_design, print_method_lambda
+
+##### FILES
+test_file = File.new("/home/thiago/dev/repo/ruby/hello_world/test.txt")
+p test_file.size
+test_file.each { |line| p line }
+
+File.open("/home/thiago/dev/repo/ruby/hello_world/test.txt", "a") do |test_file|
+  test_file.puts "Adding some cool content"
+end
+
+require "yaml"
+serialized_object = YAML.dump design_and_test
+p serialized_object
+design_and_test_again = YAML.load serialized_object
+p design_and_test_again
+
+#database = Database.new
+#database.save design_and_test
+#database.save reponsive_web_design
 
 
+p library.filter_by_category04(":web")
+
+p Book.superclass
 
