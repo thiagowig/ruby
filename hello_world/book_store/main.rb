@@ -1,3 +1,4 @@
+
 for number in (1..5)
   puts "For: #{number}"
 end
@@ -59,14 +60,14 @@ end
 library.load_books.each { |book|
   p "THE BOOK: #{book.price}"
 }
+#
+# hash = {
+#   design_and_test.isbn => design_and_test,
+#   reponsive_web_design.isbn => reponsive_web_design
+# }
 
-hash = {
-  design_and_test.isbn => design_and_test,
-  reponsive_web_design.isbn => reponsive_web_design
-}
-
-p hash[design_and_test.isbn]
-p hash[reponsive_web_design.isbn]
+# p hash[design_and_test.isbn]
+# p hash[reponsive_web_design.isbn]
 
 age = nil
 age = 27 unless age
@@ -161,4 +162,5 @@ p design_and_test_again
 p library.filter_by_category04(":web")
 
 p Book.superclass
-
+p Book.methods
+p Book.superclass.methods

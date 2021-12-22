@@ -1,23 +1,28 @@
-class Book
+require_relative "media"
 
-  attr_accessor :price, :author
-  attr_reader :isbn, :category, :title
+class Book < Media
 
-  def initialize(author, isbn = 1, pages, price, category, title)
+  attr_reader :category, :author
+
+  def initialize(title, author, isbn = 1, pages, price, category)
+    @title = title
     @author = author
     @isbn = isbn
     @pages = pages
-    @price = price
     @category = category
-    @title = title
+    @price = price
   end
 
   def to_s
-    "Author: #{@author}. ISBN : #{@isbn}. Pages: #{@pages}!. Category: #{title}. Category: #{@title}"
+    "Author: #{@author}.
+     ISBN : #{@isbn}.
+     Pages: #{@pages}.
+     Category: #{@category}.
+     Title: #{@title}"
   end
 
   def eql?(other)
-    @isbn == other.isbn
+    @title == other.title
   end
 
   def hash
