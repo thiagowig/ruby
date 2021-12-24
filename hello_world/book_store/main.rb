@@ -42,22 +42,22 @@ p words
 require File.expand_path("book_store/routes")
 
 library = []
-design_and_test = Book.new "Thiago Fonseca", "123", 10, 12, :tests, "TDD"
-reponsive_web_design = Book.new "Simone Borges", "321", 10, 10, :web_design, "Design Responsivo"
+design_and_test = Book.new "Design and Test", "Thiago Fonseca", "123", 10, 100, :tests
+reponsive_web_design = Book.new "Responsive web design", "Simone Borges", "321", 10, 10, :web_design
 library << design_and_test
 library << reponsive_web_design
 p library
 
-library = Library.new
+library = EasySale::Set.new
 #library.add_book design_and_test
 #library.add_book reponsive_web_design
 #p library.books
 
-for book in library.load_books
+for book in library.books
   p "THE BOOK: #{book.price}"
 end
 
-library.load_books.each { |book|
+library.books.each { |book|
   p "THE BOOK: #{book.price}"
 }
 #
@@ -164,3 +164,32 @@ p library.filter_by_category04(":web")
 p Book.superclass
 p Book.methods
 p Book.superclass.methods
+
+
+matrix_dvd = DVD.new "Matrix", 100, :action
+
+p design_and_test.price_with_discount
+p matrix_dvd.price_with_discount
+
+p design_and_test.format_value
+p matrix_dvd.extend CurrencyFormatter
+p matrix_dvd.format_value
+
+p library.books
+p library.inject(0) { |total, book| total += book.price }
+
+begin
+  library.raise_error
+rescue MySystemException => error
+  p "An error was raised: #{error}"
+ensure
+  p "Finally"
+end
+
+
+library.named_parameters second: 20, first: 10
+
+p DVD.ancestors
+
+require 'rubygems'
+require 'brnumeros'

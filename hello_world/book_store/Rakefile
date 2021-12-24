@@ -1,0 +1,9 @@
+# lib/tasks/db.rake
+
+require 'fileutils'
+
+namespace :db do
+  task :clear do
+    FileUtils.rm("../test.txt")
+  end
+end

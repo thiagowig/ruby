@@ -2,7 +2,7 @@
 author: Thiago Fonseca
 isbn: '123'
 pages: 10
-price: 12
+price: 120
 category: :tests
 title: TDD
 
@@ -13,3 +13,12 @@ pages: 10
 price: 10
 category: :web_design
 title: Design Responsivo
+--- !ruby/object:Book
+discount: 0.2
+title: RRuby on Rails
+author: Tania Ramos
+isbn: '444'
+pages: 200
+category: :web_framework
+price: 29.9
+
