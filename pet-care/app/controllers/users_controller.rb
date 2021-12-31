@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(users_params)
 
     if @user.save
-      render @user
+      redirect_to @user
     else
       render :new, status: :unprocessable_entity
     end

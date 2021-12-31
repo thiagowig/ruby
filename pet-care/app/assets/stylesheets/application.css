@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+.jumbotron {
+    background-image: url("pugs-resized.jpg");
+    background-size: cover;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 8px #666666;
+}
+
+.fw-bold {
+    font-weight: 700 !important;
+}
+
+.fixed-layout {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
