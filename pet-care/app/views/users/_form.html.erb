@@ -1,7 +1,9 @@
+Name 	Birthday
+Java
+<%= render "layouts/errors", entity: user, entity_name: "User" %>
 
-<%= render "layouts/errors", entity: @pet, entity_name: "Pet" %>
+<%= form_with model: user do |form| %>
 
-<%= form_with(model: @pet) do |form| %>
   <div class="card">
     <div class="card-body">
 
@@ -11,8 +13,8 @@
       </div>
 
       <div class="mb-3">
-        <%= form.label :birthday, { class: "form-label"} %>
-        <%= form.text_field :birthday, { class: "form-control", placeholder: "Birthday" } %>
+        <%= form.label :email, { class: "form-label"} %>
+        <%= form.text_field :email, { class: "form-control", placeholder: "Email" } %>
       </div>
 
       <%= form.submit "Submit", class: "btn btn-primary" %>

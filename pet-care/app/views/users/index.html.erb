@@ -1,13 +1,29 @@
 
-<h1>Users</h1>
+<br/>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<ul>
-  <% @users.each do |user| %>
-    <li>
-      <%= link_to user.name, user %>
-    </li>
-  <% end %>
+  <div id="users">
 
-</ul>
+    <table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |entity| %>
+        <tr>
+          <td><%= entity.name %></td>
+          <td><%= entity.email %></td>
+          <td>Edit | Delete</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<%= link_to "New User", new_user_path %>
+  <%= link_to "New user", new_user_path %>
+</div>

@@ -1,0 +1,14 @@
+<% if entity.errors.any? %>
+
+  <div class="alert alert-warning alert-dismissible fade show">
+    <%= pluralize(entity.errors.count, "error") %> prohibited this <%= entity_name %> from being saved:
+
+    <ul>
+      <% entity.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+
+  </div>
+
+<% end %>
