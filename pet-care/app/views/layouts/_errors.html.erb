@@ -1,18 +1,31 @@
-<% if entity.errors.any? %>
+<div class="container">
+  <% if entity && entity.errors.any? %>
 
-  <div class="alert alert-warning alert-dismissible fade show">
-    <%= pluralize(entity.errors.count, "error") %> prohibited this <%= entity_name %> from being saved:
+    <div class="alert alert-warning alert-dismissible fade show">
+      <%= pluralize(entity.errors.count, "error") %> prohibited this <%= entity_name %> from being saved:
 
-    <ul>
-      <% entity.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
+      <ul>
+        <% entity.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
 
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">×</span>
-    </button>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
 
-  </div>
+    </div>
 
-<% end %>
+  <% end %>
+
+
+  <% flash.each do |name, msg| %>
+    <div class="alert alert-<%= name == "alert" ? "warning" : "success" %>
+        alert-dissmissible fade show" role="alert">
+      <%= msg %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
+</div>

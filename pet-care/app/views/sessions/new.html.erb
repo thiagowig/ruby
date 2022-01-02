@@ -2,7 +2,7 @@
 <div class="container">
   <br/>
 
-  <p style="color: green"><%= notice %></p>
+  <%= render "layouts/errors", entity: nil, entity_name: "User" %>
 
   <br/>
 
@@ -18,7 +18,7 @@
 
         <div class="mb-3">
           <%= form.label :password, { class: "form-label"} %>
-          <%= form.text_field :password, { class: "form-control", placeholder: "Password" } %>
+          <%= form.password_field :password, { class: "form-control", placeholder: "Password" } %>
         </div>
 
         <%= form.submit "Log in", class: "btn btn-primary" %>
