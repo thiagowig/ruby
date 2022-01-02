@@ -9,26 +9,34 @@
       <li class="nav-item active">
         <a class="nav-link" href="<%= about_path %>">About <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="<%= pets_path %>">Pets <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Appointments <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Vaccines <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Medications <span class="sr-only">(current)</span></a>
-      </li>
+      <% if logged_in? %>
+        <li class="nav-item active">
+          <a class="nav-link" href="<%= pets_path %>">Pets <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Appointments <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Vaccines <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Medications <span class="sr-only">(current)</span></a>
+        </li>
+      <% end %>
     </ul>
 
-    <div>
-      <%= button_to 'Sign up', new_user_path, method: :get, class: "btn btn-outline-success my-2 my-sm-0 mr-1" %>
-    </div>
-    <div>
-      <%= button_to 'Sign in', login_path, method: :get, class: "btn btn-outline-success my-2 my-sm-0" %>
-    </div>
+    <% if not logged_in? %>
+      <div>
+        <%= button_to 'Sign up', new_user_path, method: :get, class: "btn btn-outline-success my-2 my-sm-0 mr-1" %>
+      </div>
+      <div>
+        <%= button_to 'Sign in', login_path, method: :get, class: "btn btn-outline-success my-2 my-sm-0" %>
+      </div>
+    <% else %>
+      <div>
+        <%= button_to 'Logout', login_path, method: :delete, class: "btn btn-outline-success my-2 my-sm-0" %>
+      </div>
+    <% end %>
 
 
 
