@@ -1,6 +1,8 @@
 class PetsController < ApplicationController
 
   before_action :set_pet, only: %i[ show edit update destroy ]
+  before_action :require_user
+  before_action :require_same_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @pets = helpers.current_user.pets
@@ -59,5 +61,13 @@ class PetsController < ApplicationController
 
     def pet_params
       params.require(:pet).permit(:name, :birthday)
+    end
+
+    def require_same_user
+      unless current_user == @pet.user
+        respond_to do |format|
+          format.html { redirect_to current_user, status: 302, alert: "You can only edit or delete your own pet" }
+        end
+      end
     end
 end
