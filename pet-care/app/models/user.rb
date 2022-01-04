@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  encrypts :email, deterministic: true
+
   before_save { self.email = email.downcase}
 
   has_many :pets, dependent: :destroy
