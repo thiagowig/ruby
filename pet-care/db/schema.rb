@@ -12,6 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2022_01_03_162359) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
+  enable_extension "plpgsql"
+
   create_table "pets", force: :cascade do |t|
     t.string "name"
     t.date "birthday"
@@ -20,7 +24,7 @@ ActiveRecord::Schema.define(version: 2022_01_03_162359) do
     t.string "user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
