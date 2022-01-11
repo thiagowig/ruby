@@ -1,0 +1,9 @@
+- Fix dropdown menu
+- Redirect account to the correct page
+- Add profile image
+- Create account validation by email
+- Create Vaccine feature
+- Create Medication feature
+- Create Appointment feature
+- Create reminder email
+- Create notification job

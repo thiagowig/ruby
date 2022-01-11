@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :pets
 
   get "signup", to: "users#new"
-  resources :users, except: [:new]
+  get "account", to: "users#show"
+  resources :users, except: [:new, :show]
 
   get "about", to: "about#index"
 

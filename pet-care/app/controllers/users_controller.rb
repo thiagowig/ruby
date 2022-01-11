@@ -23,7 +23,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
+
+    respond_to do |format|
+        format.html { render :new }
+    end
   end
 
   private
