@@ -7,9 +7,14 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
 
     respond_to do |format|
-      if user && user.authenticate(params[:session][:password])
+
+      if authenticate_user(user)
         session[:user_id] = user.id
         format.html { redirect_to dashboard_path}
+
+      elsif is_user_pending_validation(user)
+        format.html { redirect_to login_url, status: :unprocessable_entity, alert: "You have to validate your email" }
+
       else
         format.html { redirect_to login_url, status: :unprocessable_entity, alert: "Invalid email or password." }
       end
@@ -19,6 +24,16 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to root_path
+  end
+
+  private
+
+  def is_user_pending_validation(user)
+    user&.user_pending_validation?
+  end
+
+  def authenticate_user(user)
+    user&.active_user? && user.authenticate(params[:session][:password])
   end
 
 end

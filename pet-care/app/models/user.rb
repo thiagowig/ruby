@@ -12,4 +12,6 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  enum status: { inactive_user: 0, active_user: 1, user_pending_validation: 2 }
+
 end

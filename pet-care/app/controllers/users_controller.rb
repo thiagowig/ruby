@@ -13,10 +13,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(users_params)
+    @user.user_pending_validation!
 
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to @user
+      format.html { redirect_to login_url, notice: "Please confirm the email in your inbox" }
     else
       render :new, status: :unprocessable_entity
     end
