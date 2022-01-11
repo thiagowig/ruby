@@ -24,10 +24,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
+  end
 
-    respond_to do |format|
-        format.html { render :new }
-    end
+  def edit
+    @user = User.find(current_user.id)
   end
 
   private

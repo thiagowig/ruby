@@ -1,5 +1,5 @@
+- [OK] Redirect account to the correct page
 - Fix dropdown menu
-- Redirect account to the correct page
 - Add profile image
 - Create account validation by email
 - Create Vaccine feature

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     respond_to do |format|
       if user && user.authenticate(params[:session][:password])
         session[:user_id] = user.id
-        format.html { redirect_to account_url, notice: "Logged in successfully." }
+        format.html { redirect_to dashboard_path}
       else
         format.html { redirect_to login_url, status: :unprocessable_entity, alert: "Invalid email or password." }
       end

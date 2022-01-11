@@ -38,7 +38,7 @@
           Menu
         </button>
         <div class="dropdown-menu dropdown-menu-right">
-          <%= button_to 'Account', account_url, class: "dropdown-item" %>
+          <%= button_to 'Account', account_url, method: :get, class: "dropdown-item" %>
           <%= button_to 'Logout', login_path, method: :delete, class: "dropdown-item" %>
         </div>
       </div>
