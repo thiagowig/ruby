@@ -1,6 +1,8 @@
 class CreatePets < ActiveRecord::Migration[7.0]
   def change
-    create_table :pets do |t|
+    enable_extension 'pgcrypto'
+
+    create_table :pets, id: :uuid, default: 'gen_random_uuid()' do |t|
       t.string :name
       t.datetime :birthday
 

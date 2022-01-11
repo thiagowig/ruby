@@ -14,7 +14,7 @@
  *= require_self
  */
 .jumbotron {
-    background-image: url("pugs-resized.jpg");
+    background-image: url("pugs.jpg");
     background-size: cover;
 }
 
