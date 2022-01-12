@@ -16,6 +16,12 @@ class UsersController < ApplicationController
     @user.user_pending_validation!
 
     if @user.save
+      factor = FactorValidation.new
+      factor.user = @user
+      factor.ttl = 1.days.from_now.getutc
+      factor.factor_pending_validation!
+      factor.save
+
       format.html { redirect_to login_url, notice: "Please confirm the email in your inbox" }
     else
       render :new, status: :unprocessable_entity

@@ -1,4 +1,5 @@
 - [OK] Redirect account to the correct page
+- Config bootstrap 5
 - Fix dropdown menu
 - Add profile image
 - Create account validation by email
