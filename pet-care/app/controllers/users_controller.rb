@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :require_user, except: [:new, :create]
+  before_action :require_user, except: [:new, :create, :activate_account]
   #before_action :require_same_user, only: [:edit, :destroy]
 
   def index
@@ -22,7 +22,15 @@ class UsersController < ApplicationController
       factor.factor_pending_validation!
       factor.save
 
-      format.html { redirect_to login_url, notice: "Please confirm the email in your inbox" }
+      application_url = ENV["APPLICATION_URL"]
+      activation_path = "/account/activate/"
+      activation_link = "#{application_url}#{activation_path}#{factor.id}"
+
+      UserMailer.with(user: @user, activation_link: activation_link).account_activation.deliver_now
+
+      respond_to do |format|
+        format.html { redirect_to login_url, status: :ok, notice: "Please confirm the email in your inbox" }
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,6 +42,32 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(current_user.id)
+  end
+
+  def activate_account
+    factor = FactorValidation.find(params[:token])
+
+    if factor.factor_pending_validation?
+      factor.validated_factor!
+      factor.user.active_user!
+
+      factor.user.save
+      factor.save
+
+      session[:user_id] = factor.user.id
+
+      respond_to do |format|
+        format.html { redirect_to dashboard_path, notice: "Your account was validated."}
+      end
+    elsif factor.validated_factor? && factor.ttl > Time.now.getutc
+      respond_to do |format|
+        format.html { redirect_to login_url, alert: "This link is already activated"}
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to login_url, alert: "This link is invalid"}
+      end
+    end
   end
 
   private

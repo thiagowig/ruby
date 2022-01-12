@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get "signup", to: "users#new"
   get "account", to: "users#edit"
+  get "account/activate/:token", to: "users#activate_account"
   resources :users, except: [:new, :show]
 
   get "about", to: "about#index"
