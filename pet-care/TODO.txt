@@ -1,8 +1,12 @@
 - [OK] Redirect account to the correct page
+- [OK] Create account validation by email
+- [OK] Add signup service
+- [OK] Add activate account service
+- Add transaction
 - Config bootstrap 5
 - Fix dropdown menu
 - Add profile image
-- Create account validation by email
+- Add i18n
 - Create Vaccine feature
 - Create Medication feature
 - Create Appointment feature

@@ -13,26 +13,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(users_params)
-    @user.user_pending_validation!
 
-    if @user.save
-      factor = FactorValidation.new
-      factor.user = @user
-      factor.ttl = 1.days.from_now.getutc
-      factor.factor_pending_validation!
-      factor.save
+    if SignupService.call(@user)
+      redirect_with_notice(signup_url, :ok, "Please confirm the email in your inbox")
 
-      application_url = ENV["APPLICATION_URL"]
-      activation_path = "/account/activate/"
-      activation_link = "#{application_url}#{activation_path}#{factor.id}"
-
-      UserMailer.with(user: @user, activation_link: activation_link).account_activation.deliver_now
-
-      respond_to do |format|
-        format.html { redirect_to login_url, status: :ok, notice: "Please confirm the email in your inbox" }
-      end
     else
-      render :new, status: :unprocessable_entity
+      redirect_with_notice(signup_url, :unprocessable_entity, nil)
     end
   end
 
@@ -47,26 +33,15 @@ class UsersController < ApplicationController
   def activate_account
     factor = FactorValidation.find(params[:token])
 
-    if factor.factor_pending_validation?
-      factor.validated_factor!
-      factor.user.active_user!
+    if factor.factor_pending_validation? && factor.ttl > Time.now.getutc
+      session[:user_id] = ActivateAccountService.call(factor)
+      redirect_with_notice(dashboard_path, :ok, "Your account was validated.")
 
-      factor.user.save
-      factor.save
+    elsif factor.validated_factor?
+      redirect_with_alert(login_url, :ok, "This link is already activated")
 
-      session[:user_id] = factor.user.id
-
-      respond_to do |format|
-        format.html { redirect_to dashboard_path, notice: "Your account was validated."}
-      end
-    elsif factor.validated_factor? && factor.ttl > Time.now.getutc
-      respond_to do |format|
-        format.html { redirect_to login_url, alert: "This link is already activated"}
-      end
     else
-      respond_to do |format|
-        format.html { redirect_to login_url, alert: "This link is invalid"}
-      end
+      redirect_with_alert(login_url, :ok, "This link is invalid")
     end
   end
 

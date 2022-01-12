@@ -20,4 +20,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def redirect_with_notice(to, status, message)
+    respond_to do |format|
+      format.html { redirect_to to, status: status, notice: message }
+    end
+  end
+
+  def redirect_with_alert(to, status, message)
+    respond_to do |format|
+      format.html { redirect_to to, status: status, alert: message }
+    end
+  end
+
 end
