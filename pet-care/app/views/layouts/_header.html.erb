@@ -1,47 +1,49 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="<%= root_path %>">PET CARE</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="<%= root_path %>">PET CARE</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="<%= about_path %>">About</a>
+        </li>
 
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="<%= about_path %>">About <span class="sr-only">(current)</span></a>
-      </li>
-      <% if logged_in? %>
-        <li class="nav-item active">
-          <a class="nav-link" href="<%= pets_path %>">Pets <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Appointments <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Vaccines <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Medications <span class="sr-only">(current)</span></a>
-        </li>
-      <% end %>
-    </ul>
+        <% if logged_in? %>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= pets_path %>">Pets</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Appointments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Vaccines</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Medications</a>
+          </li>
+        <% end %>
+      </ul>
 
-    <% if not logged_in? %>
-      <div>
-        <%= button_to 'Sign up', signup_path, method: :get, class: "btn btn-outline-success my-2 my-sm-0 mr-1" %>
-      </div>
-      <div>
-        <%= button_to 'Sign in', login_path, method: :get, class: "btn btn-outline-success my-2 my-sm-0" %>
-      </div>
-    <% else %>
-      <div class="btn-group">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Menu
-        </button>
-        <div class="dropdown-menu dropdown-menu-right">
-          <%= button_to 'Account', account_url, method: :get, class: "dropdown-item" %>
-          <%= button_to 'Logout', login_path, method: :delete, class: "dropdown-item" %>
+      <% if not logged_in? %>
+        <div>
+          <%= button_to 'Log in', login_path, method: :get, class: "btn btn-outline-success" %>
         </div>
-      </div>
-  <% end %>
+        <div class="pl-1">
+          <%= button_to 'Sign up', signup_path, method: :get, class: "btn btn-success ml-1" %>
+        </div>
+      <% else %>
+        <div class="btn-group">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Menu
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <%= button_to 'Account', account_url, method: :get, class: "dropdown-item" %>
+            <%= button_to 'Logout', login_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </nav>

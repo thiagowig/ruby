@@ -2,7 +2,7 @@
 - [OK] Create account validation by email
 - [OK] Add signup service
 - [OK] Add activate account service
-- Add transaction
+- [OK] Add transaction
 - Config bootstrap 5
 - Fix dropdown menu
 - Add profile image
