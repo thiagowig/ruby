@@ -5,11 +5,12 @@ class ActivateAccountService < ApplicationService
   end
 
   def call
-    @factor.validated_factor!
-    @factor.user.active_user!
-
-    @factor.user.save
-    @factor.save
+    ActiveRecord::Base.transaction do
+      @factor.validated_factor!
+      @factor.user.active_user!
+      @factor.user.save
+      @factor.save
+    end
 
     @factor.user.id
   end
