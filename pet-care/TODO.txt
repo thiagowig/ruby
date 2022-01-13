@@ -3,6 +3,7 @@
 - [OK] Add signup service
 - [OK] Add activate account service
 - [OK] Add transaction
+- Add table indexes (add_index)
 - Config bootstrap 5
 - Fix dropdown menu
 - Add profile image
