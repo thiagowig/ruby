@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_11_235835) do
+ActiveRecord::Schema.define(version: 2022_01_13_225850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2022_01_11_235835) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "user_id"
+    t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 2022_01_11_235835) do
     t.string "password_digest"
     t.boolean "admin", default: false
     t.integer "status", default: 2
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

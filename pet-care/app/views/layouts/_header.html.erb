@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="<%= root_path %>">PET CARE</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,8 +30,8 @@
         <div>
           <%= button_to 'Log in', login_path, method: :get, class: "btn btn-outline-success" %>
         </div>
-        <div class="pl-1">
-          <%= button_to 'Sign up', signup_path, method: :get, class: "btn btn-success ml-1" %>
+        <div class="ms-1">
+          <%= button_to 'Sign up', signup_path, method: :get, class: "btn btn-success" %>
         </div>
       <% else %>
         <div class="btn-group">

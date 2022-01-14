@@ -3,14 +3,16 @@
 - [OK] Add signup service
 - [OK] Add activate account service
 - [OK] Add transaction
-- Add table indexes (add_index)
-- Config bootstrap 5
+- [OK] Add table indexes (add_index)
+- [OK] Config bootstrap 5
+- Change index
+- Add i18n
 - Fix dropdown menu
 - Add profile image
-- Add i18n
 - Create Vaccine feature
 - Create Medication feature
 - Create Appointment feature
 - Create reminder email
 - Create notification job
+- Github Actions
 - Add brakemanscanner
