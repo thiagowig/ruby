@@ -1,6 +1,5 @@
 @import 'bootstrap/scss/bootstrap';
 
-
 .form-login {
   width: 100%;
   max-width: 330px;
@@ -11,6 +10,7 @@
 .jumbotron {
   background-image: url("pugs.jpg");
   background-size: cover;
+  min-height: 1000px;
 }
 
 .text-shadow {
@@ -24,15 +24,6 @@
 .fixed-layout {
   padding: 3rem 1.5rem;
   text-align: center;
-}
-
-body {
-  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-}
-
-.cover-container {
-  max-width: 42em;
 }
 
 .bd-placeholder-img {

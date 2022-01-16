@@ -5,10 +5,11 @@
 - [OK] Add transaction
 - [OK] Add table indexes (add_index)
 - [OK] Config bootstrap 5
-- Change index
-- Add i18n
-- Fix dropdown menu
 - Add profile image
+- Send Mail
+- Change index
+- [OK] Add i18n
+- Fix dropdown menu
 - Create Vaccine feature
 - Create Medication feature
 - Create Appointment feature
