@@ -5,7 +5,8 @@
 - [OK] Add transaction
 - [OK] Add table indexes (add_index)
 - [OK] Config bootstrap 5
-- Add profile image
+- [OK] Add profile image
+- [OK] Dotenv
 - Send Mail
 - Change index
 - [OK] Add i18n
