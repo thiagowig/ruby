@@ -17,3 +17,4 @@
 - Create notification job
 - Github Actions
 - Add brakemanscanner
+- Add devise
