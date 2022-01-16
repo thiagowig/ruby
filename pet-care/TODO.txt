@@ -7,9 +7,9 @@
 - [OK] Config bootstrap 5
 - [OK] Add profile image
 - [OK] Dotenv
-- Send Mail
-- Change index
+- [OK] Send Mail
 - [OK] Add i18n
+- Change index
 - Fix dropdown menu
 - Create Vaccine feature
 - Create Medication feature
