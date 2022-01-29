@@ -1,46 +1,68 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="<%= root_path %>">PET CARE</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<%= about_path %>">About</a>
-        </li>
+<!--<nav class="navbar navbar-expand-md navbar-dark bg-dark">-->
+<!--  <div class="container-fluid">-->
+<!--    <a class="navbar-brand" href="<%#= root_path %>">PET CARE</a>-->
+<!--    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--      <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+<!--    <div class="collapse navbar-collapse" id="navbarCollapse">-->
+<!--      <ul class="navbar-nav me-auto mb-2 mb-md-0">-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link active" aria-current="page" href="<%#= about_path %>">About</a>-->
+<!--        </li>-->
 
-        <% if logged_in? %>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= pets_path %>">Pets</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Appointments</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Vaccines</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Medications</a>
-          </li>
-        <% end %>
-      </ul>
+        <%# if logged_in? %>
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="<%#= pets_path %>">Pets</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="#">Appointments</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="#">Vaccines</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="#">Medications</a>-->
+<!--          </li>-->
+        <%# end %>
+<!--      </ul>-->
 
-      <% if not logged_in? %>
-        <div>
-          <%= button_to 'Log in', login_path, method: :get, class: "ui blue button" %>
-        </div>
-        <div class="ms-1">
-          <%= button_to 'Sign up', signup_path, method: :get, class: "ui blue button" %>
-        </div>
-      <% else %>
-        <div>
-          <%= button_to 'Account', account_url, method: :get, class: "btn btn-outline-success" %>
-        </div>
-        <div class="ms-1">
-          <%= button_to 'Logout', login_path, method: :delete, class: "btn btn-success" %>
-        </div>
-      <% end %>
+      <%# if not logged_in? %>
+<!--        <div>-->
+          <%#= button_to 'Log in', login_path, method: :get, class: "ui blue button" %>
+<!--        </div>-->
+<!--        <div class="ms-1">-->
+          <%#= button_to 'Sign up', signup_path, method: :get, class: "ui blue button" %>
+<!--        </div>-->
+      <%# else %>
+<!--        <div>-->
+          <%#= button_to 'Account', account_url, method: :get, class: "btn btn-outline-success" %>
+<!--        </div>-->
+<!--        <div class="ms-1">-->
+          <%#= button_to 'Logout', login_path, method: :delete, class: "btn btn-success" %>
+<!--        </div>-->
+      <%# end %>
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->
+
+<div class="ui large menu">
+  <a class="active item">
+    Home
+  </a>
+  <a class="item">
+    Messages
+  </a>
+  <div class="right menu">
+    <div class="ui dropdown item">
+      Language <i class="dropdown icon"></i>
+      <div class="menu">
+        <a class="item">English</a>
+        <a class="item">Russian</a>
+        <a class="item">Spanish</a>
+      </div>
+    </div>
+    <div class="item">
+      <div class="ui primary button">Sign Up</div>
     </div>
   </div>
-</nav>
+</div>
