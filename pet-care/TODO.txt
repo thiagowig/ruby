@@ -20,3 +20,4 @@
 - Github Actions
 - Add brakemanscanner
 - Add devise
+- Rubocop
