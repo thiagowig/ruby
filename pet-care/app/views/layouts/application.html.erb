@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>PetCare</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,12 +10,17 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main role="main">
-      <%= render 'layouts/header' %>
+  <body id="root">
+
+    <%= render 'layouts/header' %>
+
+    <div class="ui container content">
       <%= yield %>
-      <%= render 'layouts/footer' %>
-    </main>
+    </div>
+
+
+    <%= render 'layouts/footer' %>
+
   </body>
 
 </html>

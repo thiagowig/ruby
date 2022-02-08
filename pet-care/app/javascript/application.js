@@ -4,4 +4,8 @@ import "controllers"
 import "jquery"
 import "semantic-ui"
 
-$('.ui.dropdown').dropdown()
+$(document).ready(function() {
+    $(".ui.toggle.button").click(function() {
+        $(".mobile.only.grid .ui.vertical.menu").toggle(100);
+    });
+});
