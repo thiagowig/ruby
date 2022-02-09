@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "about", to: "about#index"
   get "dashboard", to: "dashboard#index"
 
-  get "login", to: "sessions#new"
+  get "login", to: "sessions#login"
   post "login", to: "sessions#create"
   delete "login", to: "sessions#destroy"
 end

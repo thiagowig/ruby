@@ -9,7 +9,7 @@
 - [OK] Dotenv
 - [OK] Send Mail
 - [OK] Add i18n
-- Install semantic UI
+- [OK] Install semantic UI
 - Change index
 - Fix dropdown menu
 - Create Vaccine feature

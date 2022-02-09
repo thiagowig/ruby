@@ -32,4 +32,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def generate_flash(type, main_message, message_topics = nil)
+    { type: type, main_message: main_message, message_topics: message_topics }
+  end
+
 end

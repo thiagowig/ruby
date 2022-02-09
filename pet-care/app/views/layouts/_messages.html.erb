@@ -1,0 +1,21 @@
+<div>
+
+  <% if flash.present? %>
+    <div class="ui <%= flash[:type] %> message">
+      <i class="close icon"></i>
+      <div class="header">
+        <%= flash[:main_message] %>
+      </div>
+
+      <% if flash[:message_topics] %>
+        <ul class="list">
+          <% flash[:message_topics].each do |topic| %>
+            <li><%= topic %></li>
+         <% end %>
+        </ul>
+
+      <% end %>
+    </div>
+  <% end %>
+
+</div>

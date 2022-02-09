@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  def new
+  def login
   end
 
   def create
@@ -13,10 +13,10 @@ class SessionsController < ApplicationController
         format.html { redirect_to dashboard_path}
 
       elsif is_user_pending_validation(user)
-        format.html { redirect_to login_url, status: :unprocessable_entity, alert: "You have to validate your email" }
+        format.html { redirect_to login_path, status: :unprocessable_entity, flash: generate_flash("warning", "You have to validate your email") }
 
       else
-        format.html { redirect_to login_url, status: :unprocessable_entity, alert: "Invalid email or password." }
+        format.html { redirect_to login_path, status: :unprocessable_entity, flash: generate_flash("warning", "Invalid email or password.") }
       end
     end
   end
