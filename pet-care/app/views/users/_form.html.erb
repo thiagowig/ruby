@@ -1,33 +1,30 @@
+<div class="ui centered grid container">
+  <div class="nine wide column">
 
-<%= render "layouts/messages", entity: user, entity_name: "User" %>
+    <%= render "layouts/messages" %>
 
-<%= form_with model: user do |form| %>
-
-  <div class="card">
-    <div class="card-body">
-
-      <div class="mb-3">
-        <%= form.label :name, { class: "form-label"} %>
-        <%= form.text_field :name, { class: "form-control", placeholder: "Name" } %>
+    <div class="ui fluid card">
+      <div class="content">
+          <%= form_with model: user, class: "ui form" do |form| %>
+          <div class="field">
+            <%= form.label :name %>
+            <%= form.text_field :name %>
+          </div>
+          <div class="field">
+            <%= form.label :email %>
+            <%= form.text_field :email %>
+          </div>
+          <div class="field">
+            <%= form.label :password %>
+            <%= form.password_field :password  %>
+          </div>
+            <%= image_tag user.displayed_image, loading: "lazy", class: "profile-image" %>
+            <%= form.file_field :image, { class: "form-control"} %>
+          </div>
+          <%= form.submit I18n.t("signup"), class: "ui primary button" %>
+        <% end %>
       </div>
-
-      <div class="mb-3">
-        <%= form.label :email, { class: "form-label"} %>
-        <%= form.text_field :email, { class: "form-control", placeholder: "Email" } %>
-      </div>
-
-      <div class="mb-3">
-        <%= form.label :password, { class: "form-label"} %>
-        <%= form.password_field :password, { class: "form-control", placeholder: "password" } %>
-      </div>
-
-      <div class="mb-3">
-        <%= image_tag user.displayed_image, loading: "lazy", class: "img-fluid img-thumbnail profile-image" %>
-        <%= form.file_field :image, { class: "form-control"} %>
-      </div>
-
-      <%= form.submit I18n.t("signup"), class: "btn btn-primary" %>
-
     </div>
   </div>
-<% end %>
+</div>
+

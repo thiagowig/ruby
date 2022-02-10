@@ -1,24 +1,22 @@
 
-<div class="page-login">
-  <div class="ui centered grid container">
-    <div class="nine wide column">
+<div class="ui centered grid container">
+  <div class="nine wide column">
 
-      <%= render "layouts/messages", entity: nil, entity_name: "User" %>
+    <%= render "layouts/messages"  %>
 
-      <div class="ui fluid card">
-        <div class="content">
-          <%= form_with scope: :session, url: login_path, class: "ui form" do |form| %>
-            <div class="field">
-              <%= form.label :email, { class: "form-label"} %>
-              <%= form.text_field :email, { class: "form-control", placeholder: "Email" } %>
-            </div>
-            <div class="field">
-              <%= form.label :password, { class: "form-label"} %>
-              <%= form.password_field :password, { class: "form-control", placeholder: "Password" } %>
-            </div>
-            <%= form.submit "Log in", class: "ui primary button" %>
-          <% end %>
-        </div>
+    <div class="ui fluid card">
+      <div class="content">
+        <%= form_with scope: :session, url: login_path, class: "ui form" do |form| %>
+          <div class="field">
+            <%= form.label :email %>
+            <%= form.text_field :email %>
+          </div>
+          <div class="field">
+            <%= form.label :password %>
+            <%= form.password_field :password %>
+          </div>
+          <%= form.submit "Log in", class: "ui primary button" %>
+        <% end %>
       </div>
     </div>
   </div>

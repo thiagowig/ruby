@@ -20,15 +20,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def redirect_with_notice(to, status, message)
+  def redirect_with_message(to, status, type, main_message, message_topics = nil)
     respond_to do |format|
-      format.html { redirect_to to, status: status, notice: message }
-    end
-  end
-
-  def redirect_with_alert(to, status, message)
-    respond_to do |format|
-      format.html { redirect_to to, status: status, alert: message }
+      format.html { redirect_to to, status: status, flash: generate_flash(type, main_message, message_topics) }
     end
   end
 
