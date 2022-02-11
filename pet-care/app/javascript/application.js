@@ -9,3 +9,12 @@ $(document).ready(function() {
         $(".mobile.only.grid .ui.vertical.menu").toggle(100);
     });
 });
+
+$('.message .close')
+    .on('click', function() {
+        $(this)
+            .closest('.message')
+            .transition('fade')
+        ;
+    })
+;

@@ -14,12 +14,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(users_params)
 
-    if SignupService.call(@user)
-      redirect_with_message(signup_url, :ok, "", "Please confirm the email in your inbox")
+    begin
+      SignupService.call(@user)
+      redirect_to root_path, flash: generate_flash("success", "Account created! Please confirm the email in your inbox")
 
-    else
-      redirect_with_message(signup_url, :unprocessable_entity, "error", "Something wrong")
+    rescue Exception => error
+      p "An error was raised: #{error}"
+      redirect_with_message(signup_path, :unprocessable_entity, "error", error)
     end
+
   end
 
   def show
@@ -35,13 +38,13 @@ class UsersController < ApplicationController
 
     if factor.factor_pending_validation? && factor.ttl > Time.now.getutc
       session[:user_id] = ActivateAccountService.call(factor)
-      redirect_with_message(dashboard_path, :ok, "success", "Your account was validated.")
+      redirect_to dashboard_path, flash: generate_flash("success", "Your account was activated!")
 
     elsif factor.validated_factor?
-      redirect_with_message(login_path, :ok, "warning", "This link is already activated")
+      redirect_to login_path, flash: generate_flash("warning", "This link was already activated")
 
     else
-      redirect_with_message(login_path, :ok, "warning", "This link is invalid")
+      redirect_to login_path, flash: generate_flash("warning", "This link is invalid")
     end
   end
 

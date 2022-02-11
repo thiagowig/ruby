@@ -1,32 +1,26 @@
 <div class="ui tablet computer only padded grid">
   <div class="ui top fixed borderless inverted fluid menu">
     <div class="ui container">
-      <a class="header item" href="<%= root_path %>">Pet Care</a>
+      <a class="header item" href="<%= logged_in? ? dashboard_path : root_path %>">Pet Care</a>
       <a class="item" href="<%= about_path %>">About</a>
-      <div class="ui simple dropdown item">
-        Dropdown <i class="dropdown icon"></i>
-        <div class="menu">
-          <a class="item" href="#">Link Item</a>
-          <a class="item" href="#">Link Item</a>
-          <div class="divider"></div>
-          <div class="header">Header Item</div>
-          <div class="item">
-            <i class="dropdown icon"></i>
-            Sub Menu
+      <div class="right menu">
+        <% if logged_in? %>
+          <div class="ui simple dropdown item">
+            Menu <i class="dropdown icon"></i>
             <div class="menu">
-              <a class="item" href="#">Link Item</a>
-              <a class="item" href="#">Link Item</a>
+              <a class="item" href="#">Account</a>
+              <a class="item" href="#">Settings</a>
+              <div class="divider"></div>
+              <a class="item" href="<%= logout_path %>">Logout</a>
             </div>
           </div>
-          <a class="item" href="#">Link Item</a>
-        </div>
-      </div>
-      <div class="right menu">
-        <div class="item">
-          <div class="field">
-            <%= button_to 'Log in', login_path, method: :get, class: "ui green button" %>
+        <% else %>
+          <div class="item">
+            <div class="field">
+              <%= button_to 'Log in', login_path, method: :get, class: "ui green button" %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>

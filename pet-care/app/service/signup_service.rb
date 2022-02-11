@@ -5,7 +5,6 @@ class SignupService < ApplicationService
   end
 
   def call
-    begin
       ActiveRecord::Base.transaction do
         @user.user_pending_validation!
         @user.save
@@ -18,12 +17,7 @@ class SignupService < ApplicationService
         activation_link = "#{application_url}#{activation_path}#{factor.id}"
 
         UserMailer.with(user: @user, activation_link: activation_link).account_activation.deliver_now
-        true
       end
-    rescue Exception => error
-      p "An error was raised: #{error}"
-      false
-    end
   end
 
   private
