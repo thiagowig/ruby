@@ -16,7 +16,7 @@ class SignupService < ApplicationService
         activation_path = "/account/activate/"
         activation_link = "#{application_url}#{activation_path}#{factor.id}"
 
-        UserMailer.with(user: @user, activation_link: activation_link).account_activation.deliver_now
+        UserMailer.with(user: @user, activation_link: activation_link).account_activation.deliver_later
       end
   end
 
