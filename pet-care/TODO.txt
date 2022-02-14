@@ -10,9 +10,11 @@
 - [OK] Send Mail
 - [OK] Add i18n
 - [OK] Install semantic UI
-- Change index
-- Fix dropdown menu
+- [OK] Fix image relation
+- [OK] Fix dropdown menu
 - Create Vaccine feature
+- Implement Sidekiq
+- Change index
 - Create Medication feature
 - Create Appointment feature
 - Create reminder email
