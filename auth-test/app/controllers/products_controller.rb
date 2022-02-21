@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    p "SessionID: #{session[:session_id]}"
     @products = Product.all
   end
 
