@@ -12,6 +12,7 @@
 - [OK] Install semantic UI
 - [OK] Fix image relation
 - [OK] Fix dropdown menu
+- Jobs
 - Create Vaccine feature
 - Implement Sidekiq
 - Change index

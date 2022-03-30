@@ -32,5 +32,9 @@ module PetCare
       :authentication => :plain
     }
 
+    config.after_initialize do
+      NotifyScheduledEventsJob.perform_later
+    end
+
   end
 end
